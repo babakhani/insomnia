@@ -3,7 +3,6 @@ import { Drawer } from 'native-base'
 import { DefaultRenderer, Actions as NavigationActions } from 'react-native-router-flux'
 import DrawerContent from '../Containers/DrawerContent'
 import { connect } from 'react-redux'
-import Styles from './Styles/NavigationDrawerStyles'
 
 /* *******************
 * Documentation: https://github.com/root-two/react-native-drawer

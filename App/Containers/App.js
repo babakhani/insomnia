@@ -6,7 +6,7 @@ import createStore from '../Redux'
 
 // create our store
 const store = createStore()
-
+global.__DEV__ = false
 /**
  * Provides an entry point into our application.  Both index.ios.js and index.android.js
  * call this component first.

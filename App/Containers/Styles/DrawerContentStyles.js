@@ -1,11 +1,12 @@
 export default {
   container: {
     flex: 1,
-    padding: 20,
+    padding: 0,
     backgroundColor: '#fff'
   },
   logo: {
-    width: 260,
-    resizeMode: 'contain'
+    width: 300,
+    resizeMode: 'contain',
+    backgroundColor: '#000'
   }
 }

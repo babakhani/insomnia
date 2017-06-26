@@ -1,10 +1,13 @@
 import React from 'react'
-import { ScrollView, Text, Image, View } from 'react-native'
-import { Button, Text as NBText } from 'native-base'
-import { Images } from '../Themes'
+import {ScrollView, Text, Image, View, I18nManager} from 'react-native'
+import {Button, Text as NBText} from 'native-base'
+import {Images} from '../Themes'
+import {Actions} from 'react-native-router-flux'
 
 // Styles
 import styles from './Styles/LaunchScreenStyles'
+
+const IS_RTL = I18nManager.isRTL
 
 export default class LaunchScreen extends React.Component {
 
@@ -16,15 +19,13 @@ export default class LaunchScreen extends React.Component {
           <View style={styles.centered}>
             <Image source={Images.launch} style={styles.logo} />
           </View>
-
-          <View style={styles.section} >
-            <Image source={Images.ready} />
+          <View style={styles.section}>
             <Text style={styles.sectionText}>
-              {"This probably isn't what your app is going to look like. Unless your designer handed you this screen and, in that case, congrats! You're ready to ship. For everyone else, this is where you'll see a live preview of your fully functioning app using Ignite."}
+              {'Wellcome to MellatExchange Application' + IS_RTL}
             </Text>
           </View>
-          <Button style={{alignSelf: 'center'}} onPress={()=> this.context.drawer.open()}>
-            <NBText>Explore!</NBText>
+          <Button style={{alignSelf: 'center'}} onPress={Actions.exchangeView}>
+            <NBText>Enjoy!</NBText>
           </Button>
         </ScrollView>
       </View>

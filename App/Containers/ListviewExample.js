@@ -1,8 +1,7 @@
 import React from 'react'
-import { connect } from 'react-redux'
-import { List, ListItem, Text, View, Container, Header, Title, Button, Left, Right, Body, Icon} from 'native-base'
+import {connect} from 'react-redux'
+import {List, ListItem, Text, Container, Header, Title, Button, Left, Right, Body, Icon} from 'native-base'
 // import Icon from 'react-native-vector-icons/Ionicons'
-
 
 const dataObjects = [
   {title: 'First Title', description: 'First Description'},
@@ -33,8 +32,8 @@ class ListviewExample extends React.Component {
       <Container >
         <Header>
           <Left>
-            <Button transparent onPress={()=> this.context.drawer.open()}>
-              <Icon name="ios-menu" />
+            <Button transparent onPress={() => this.context.drawer.open()}>
+              <Icon name='ios-menu' />
             </Button>
           </Left>
           <Body style={{flex: 3}}>
@@ -44,19 +43,19 @@ class ListviewExample extends React.Component {
         </Header>
         <List dataArray={dataObjects}
           renderRow={(item) =>
-          <ListItem>
-            <Text>{item.title}</Text>
-            <Right>
-              <Text note>{item.description}</Text>
-            </Right>
-          </ListItem>
+            <ListItem>
+              <Text>{item.title}</Text>
+              <Right>
+                <Text note>{item.description}</Text>
+              </Right>
+            </ListItem>
         } />
-    </Container>
+      </Container>
     )
   }
 }
 ListviewExample.contextTypes = {drawer: React.PropTypes.object}
-const mapStateToProps = (state) => {
+const mapStateToProps = () => {
   return {
     // ...redux state to props here
   }

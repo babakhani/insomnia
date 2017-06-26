@@ -1,9 +1,9 @@
 // leave off @2x/@3x
 const images = {
-  logo: require('../Images/ignitenb.png'),
-  logoDark: require('../Images/ignitenbdark.png'),
-  clearLogo: require('../Images/top_logo.png'),
-  launch: require('../Images/launch-icon.png'),
+  logo: require('../Images/mellatexchangelogo.png'),
+  logoDark: require('../Images/mellatexchangelogo.png'),
+  clearLogo: require('../Images/mellatexchangelogo.png'),
+  launch: require('../Images/mellatexchangelogo.png'),
   ready: require('../Images/your-app.png'),
   ignite: require('../Images/ignite_logo.png'),
   igniteClear: require('../Images/ignite-logo-transparent.png'),

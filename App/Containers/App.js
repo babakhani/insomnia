@@ -1,12 +1,10 @@
-import '../Config'
-import React, { Component } from 'react'
-import { Provider } from 'react-redux'
+import React, {Component} from 'react'
+import {Provider} from 'react-redux'
 import RootContainer from './RootContainer'
-import createStore from '../Redux'
+import {store} from '../Redux/'
 
 // create our store
-const store = createStore()
-global.__DEV__ = false
+console.disableYellowBox = true;
 /**
  * Provides an entry point into our application.  Both index.ios.js and index.android.js
  * call this component first.

@@ -2,27 +2,32 @@ import React from 'react'
 import {RefreshControl} from 'react-native'
 import {connect} from 'react-redux'
 import {
-    ListItem,
-    Text,
-    Container,
-    Thumbnail,
-    Grid,
-    Col,
-    Body,
-    Card,
-    CardItem,
-    Icon
+  ListItem,
+  Text,
+  Container,
+  Thumbnail,
+  Grid,
+  Col,
+  Body,
+  Card,
+  CardItem,
+  Icon
 } from 'native-base'
 import styles from './BillRateStyles'
 const moment = require('moment')
 
 function ChangeIcon (props) {
   if (props.change === 'up') {
-    return <Icon style={{color: 'green'}} name='arrow-up' />
+    return <Icon style={{color: 'green'}} name='arrow-up'/>
   } else {
-    return <Icon style={{color: 'red'}} name='arrow-down' />
+    return <Icon style={{color: 'red'}} name='arrow-down'/>
   }
 }
+
+
+import {
+  login, logout, incrementAsync
+} from '../../Actions/index'
 
 class CoinRates extends React.Component {
   constructor (props) {
@@ -35,46 +40,28 @@ class CoinRates extends React.Component {
         coin: []
       }
     }
-    this.getExchangeData()
+    console.log("coin")
+    console.log(this.props.exchangeData.coin)
   }
 
-  getExchangeData () {
-    this.setState({
-      isLoading: true
-    })
-
-    fetch('https://private-83128-exchange8.apiary-mock.com/exchange#', {
-      method: 'GET'
-    }).then((response) => response.json())
-            .then((responseJson) => {
-              this.setState({
-                isLoading: false,
-                lastUpdateTime: moment().format(),
-                exchangeData: responseJson[0]
-              }, function () {
-                    // do something with new state
-              })
-                // return responseJson.movies;
-            })
-            .catch((error) => {
-              console.error(error)
-            })
+  componentWillMount () {
+    this.props.incrementAsync()
   }
 
   render () {
     return (
       <Container >
         <ListItem itemDivider>
-          <Text style={styles.updateText}>Last update: {this.state.lastUpdateTime}</Text>
+          {/*<Text style={styles.updateText}>Last update: {this.state.lastUpdateTime}</Text>*/}
         </ListItem>
 
         <Card refreshControl={
           <RefreshControl
             refreshing={this.state.isLoading}
-            onRefresh={this.getExchangeData.bind(this)}
+            onRefresh={() => this.props.incrementAsync()}
           />
-        } style={{flex: 0}} dataArray={this.state.exchangeData.coin}
-          renderRow={(item) =>
+        } style={{flex: 0}} dataArray={this.props.exchangeData.coin}
+              renderRow={(item) =>
             <CardItem cardBody style={{borderWidth: 0.5, borderColor: '#d6d7da', margin: 5}} bordered='true'>
               <Body>
                 <Grid>
@@ -98,15 +85,22 @@ class CoinRates extends React.Component {
                 </Grid>
               </Body>
             </CardItem>
-        } />
+        }/>
       </Container>
     )
   }
 }
 CoinRates.contextTypes = {drawer: React.PropTypes.object}
-const mapStateToProps = (state) => {
-  return {
-        // ...redux state to props here
-  }
-}
-export default connect(mapStateToProps)(CoinRates)
+
+const mapStateToProps = (state, ownProps) => ({
+  isAuth: state.toJS().isAuth,
+  dataLoaded: state.toJS().dataLoaded,
+  exchangeData: state.toJS().exchangeData,
+});
+
+const mapDispatchToProps = {
+  login, logout, incrementAsync
+};
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(CoinRates)

@@ -2,7 +2,6 @@ import React, {Component} from 'react'
 import {Scene, Router} from 'react-native-router-flux'
 import NavigationDrawer from './NavigationDrawer'
 import LaunchScreen from '../Containers/LaunchScreen'
-import ListviewExample from '../Containers/ListviewExample'
 import Login from '../Containers/LoginScreen'
 import ExchangeView from '../Containers/ExchangeView'
 import ContactUs from '../Containers/Contactus'
@@ -15,14 +14,13 @@ class NavigationRouter extends Component {
     return (
       <Router>
         <Scene key='drawer' component={NavigationDrawer} open={false}>
-          <Scene key='login' component={Login} title='Login' />
-          <Scene initial key='launchScreen' component={LaunchScreen} title='LaunchScreen' />
-          <Scene key='listViewExample' component={ListviewExample} />
-          <Scene key='cardExample' component={ListviewExample} />
-          <Scene key='exchangeView' component={ExchangeView} />
-          <Scene key='contactUs' component={ContactUs} />
-          <Scene key='settings' component={Settings} />
-
+          <Scene key='login' component={Login} title='Login'/>
+          <Scene key='launchScreen' component={LaunchScreen} title='LaunchScreen'/>
+          <Scene key='listViewExample' component={ExchangeView}/>
+          <Scene key='cardExample' component={ExchangeView}/>
+          <Scene key='exchangeView' component={ExchangeView}/>
+          <Scene key='contactUs' component={ContactUs}/>
+          <Scene initial key='settings' component={Settings}/>
         </Scene>
       </Router>
     )

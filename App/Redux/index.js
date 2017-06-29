@@ -1,14 +1,21 @@
-import { combineReducers } from 'redux'
-import configureStore from './CreateStore'
-import rootSaga from '../Sagas/'
+import {AsyncStorage} from 'react-native'
+import {createStore, compose, applyMiddleware} from 'redux'
+//import {persistStore, autoRehydrate} from 'redux-persist'
+import {persistStore, autoRehydrate} from 'redux-persist-immutable'
+import reducer from '../Reducers'
+import thunkMiddleware from 'redux-thunk'
 
-export default () => {
-  /* ------------- Assemble The Reducers ------------- */
-  const rootReducer = combineReducers({
-    github: require('./GithubRedux').reducer,
-    login: require('./LoginRedux').reducer,
-    search: require('./SearchRedux').reducer
-  })
+import Immutable from 'immutable';
+const initialState = Immutable.Map();
+import {createLogger} from 'redux-logger'
 
-  return configureStore(rootReducer, rootSaga)
-}
+const logger = createLogger({
+  // ...options
+});
+
+export const store = compose(autoRehydrate(), applyMiddleware(thunkMiddleware))(createStore)(reducer)
+persistStore(store, {storage: AsyncStorage}, () => {
+  console.log('restored')
+});
+
+

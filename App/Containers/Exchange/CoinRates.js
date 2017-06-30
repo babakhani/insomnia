@@ -1,21 +1,24 @@
 import React from 'react'
 import {RefreshControl} from 'react-native'
 import {connect} from 'react-redux'
+import {Switch, ListView, View} from 'react-native'
 import {
   ListItem,
   Text,
   Container,
-  Thumbnail,
   Grid,
   Col,
   Body,
   Card,
   CardItem,
+  Thumbnail,
   Icon
 } from 'native-base'
 import styles from './BillRateStyles'
-const moment = require('moment')
-
+const moment = require('moment');
+import {
+  updateExchangeData
+} from '../../Actions/index'
 function ChangeIcon (props) {
   if (props.change === 'up') {
     return <Icon style={{color: 'green'}} name='arrow-up'/>
@@ -24,10 +27,6 @@ function ChangeIcon (props) {
   }
 }
 
-
-import {
-  login, logout, incrementAsync
-} from '../../Actions/index'
 
 class CoinRates extends React.Component {
   constructor (props) {
@@ -45,22 +44,21 @@ class CoinRates extends React.Component {
   }
 
   componentWillMount () {
-    this.props.incrementAsync()
+    this.props.updateExchangeData()
   }
 
   render () {
     return (
       <Container >
         <ListItem itemDivider>
-          {/*<Text style={styles.updateText}>Last update: {this.state.lastUpdateTime}</Text>*/}
+          <Text style={styles.updateText}>Last update {this.props.lastUpdateTime}</Text>
         </ListItem>
-
         <Card refreshControl={
           <RefreshControl
-            refreshing={this.state.isLoading}
-            onRefresh={() => this.props.incrementAsync()}
+            refreshing={this.props.refreshing}
+            onRefresh={this.props.updateExchangeData}
           />
-        } style={{flex: 0}} dataArray={this.props.exchangeData.coin}
+        } style={{flex: 0}} dataArray={this.props.exchangeData}
               renderRow={(item) =>
             <CardItem cardBody style={{borderWidth: 0.5, borderColor: '#d6d7da', margin: 5}} bordered='true'>
               <Body>
@@ -91,16 +89,16 @@ class CoinRates extends React.Component {
   }
 }
 CoinRates.contextTypes = {drawer: React.PropTypes.object}
-
 const mapStateToProps = (state, ownProps) => ({
   isAuth: state.toJS().isAuth,
   dataLoaded: state.toJS().dataLoaded,
-  exchangeData: state.toJS().exchangeData,
+  exchangeData: state.toJS().exchangeData.bill,
+  refreshing: state.toJS().refreshing,
+  lastUpdateTime: state.toJS().lastUpdateTime
 });
 
 const mapDispatchToProps = {
-  login, logout, incrementAsync
+  updateExchangeData
 };
-
 
 export default connect(mapStateToProps, mapDispatchToProps)(CoinRates)

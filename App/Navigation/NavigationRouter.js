@@ -18,9 +18,9 @@ class NavigationRouter extends Component {
           <Scene key='launchScreen' component={LaunchScreen} title='LaunchScreen'/>
           <Scene key='listViewExample' component={ExchangeView}/>
           <Scene key='cardExample' component={ExchangeView}/>
-          <Scene key='exchangeView' component={ExchangeView}/>
+          <Scene initial key='exchangeView' component={ExchangeView}/>
           <Scene key='contactUs' component={ContactUs}/>
-          <Scene initial key='settings' component={Settings}/>
+          <Scene key='settings' component={Settings}/>
         </Scene>
       </Router>
     )

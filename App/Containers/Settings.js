@@ -25,7 +25,7 @@ import {
 } from 'native-base'
 
 import {
-  login, logout, incrementAsync
+  login, logout, updateExchangeData
 } from '../Actions/index'
 
 class Settings extends React.Component {
@@ -34,7 +34,7 @@ class Settings extends React.Component {
   }
 
   componentWillMount () {
-    this.props.incrementAsync()
+    this.props.updateExchangeData()
   }
 
   render () {
@@ -84,31 +84,6 @@ class Settings extends React.Component {
             <Switch value={this.props.dataLoaded}/>
           </Right>
         </ListItem>
-        <ListItem icon>
-          <Left>
-            <Icon name='settings'/>
-          </Left>
-          <Body>
-          <Button onPress={() => this.props.incrementAsync()}>
-            <Text>LOAD DATA</Text>
-          </Button>
-          </Body>
-          <Right>
-            <Switch value={this.props.dataLoaded}/>
-          </Right>
-        </ListItem>
-        <ListItem icon>
-          <Body>
-          <Text>_{this.props.dataType}_</Text>
-          </Body>
-        </ListItem>
-        <Content>
-          <ListView
-            dataSource={this.props.exchangeData()}
-            renderRow={(rowData) => <Text>{rowData.title}</Text>}
-          />
-        </Content>
-
       </Container>
     )
   }
@@ -127,7 +102,7 @@ const mapStateToProps = (state, ownProps) => ({
 });
 
 const mapDispatchToProps = {
-  login, logout, incrementAsync
+  login, logout, updateExchangeData
 };
 
 const AppContainer = connect(

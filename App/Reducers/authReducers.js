@@ -5,11 +5,13 @@ const initialState = fromJS({
   isAuth: false,
   dataLoaded: false,
   dataType: 'Bah',
+  refreshing: false,
+  lastUpdateTime: '',
   exchangeData: {
-    bill:[{title:"test"}]
+    bill: [],
+    coin: []
   }
 });
-
 //const todoReducers = handleActions({
 //  LOGIN: (state) => (
 //    state.set('isAuth', true)
@@ -27,10 +29,16 @@ const initialState = fromJS({
 
 export const todoReducers = (state, action) => {
   switch (action.type) {
+    case 'START_REFRESHING':
+      return state.set('refreshing', true);
+    case 'END_REFRESHING':
+      return state.set('refreshing', false);
     case 'LOGIN':
       return state.set('isAuth', true);
     case 'LOGOUT':
       return state.set('isAuth', false);
+    case 'UPDATE_LAST_UPDATE_TIME':
+      return state.set('lastUpdateTime', action.date);
     case 'DATA_LOADED':
       console.log('DATA_LOADED');
       console.log(state);

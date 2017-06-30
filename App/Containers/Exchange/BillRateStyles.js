@@ -13,7 +13,7 @@ export default {
   updateText: {
     color: 'gray',
     fontSize: 10,
-    height: 10,
+    height: 15,
     padding: 0
   },
   listHelperText: {

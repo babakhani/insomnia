@@ -16,6 +16,6 @@ const logger = createLogger({
 export const store = compose(autoRehydrate(), applyMiddleware(thunkMiddleware))(createStore)(reducer)
 persistStore(store, {storage: AsyncStorage}, () => {
   console.log('restored')
-}).purge();
+});
 
 

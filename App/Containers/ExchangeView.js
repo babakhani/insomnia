@@ -33,10 +33,10 @@ class ExchangeView extends React.Component {
         </Header>
         <Tabs initialPage={0}>
           <Tab heading='Bill rates'>
-            <TransferRates />
+            <BillRates />
           </Tab>
           <Tab heading='Coin rates'>
-            <TransferRates />
+            <CoinRates />
           </Tab>
           <Tab heading='Transfer rates'>
             <TransferRates />

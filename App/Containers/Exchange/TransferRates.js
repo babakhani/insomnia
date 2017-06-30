@@ -1,23 +1,24 @@
 import React from 'react'
 import {RefreshControl} from 'react-native'
 import {connect} from 'react-redux'
-import {Switch} from 'react-native'
+import {Switch, ListView, View} from 'react-native'
 import {
   ListItem,
   Text,
   Container,
-  Thumbnail,
   Grid,
   Col,
   Body,
   Card,
   CardItem,
-  Button,
   Icon
 } from 'native-base'
 import styles from './BillRateStyles'
-const moment = require('moment')
-
+const moment = require('moment');
+import {
+  updateExchangeData
+} from '../../Actions/index'
+import Flag from '../../Components/react-native-flags'
 function ChangeIcon (props) {
   if (props.change === 'up') {
     return <Icon style={{color: 'green'}} name='arrow-up'/>
@@ -26,43 +27,44 @@ function ChangeIcon (props) {
   }
 }
 
-
-import {
-  login, logout, incrementAsync
-} from '../../Actions/index'
-
 class CoinRates extends React.Component {
-  constructor (props) {
-    super(props)
+  constructor () {
+    super()
     this.state = {
-      isLoading: true,
-      lastUpdateTime: '',
-      exchangeData: {
-        bill: [],
-        coin: []
-      }
+      isLoading: true
     }
-    console.log("coin")
-    console.log(this.props.exchangeData.coin)
   }
 
   componentWillMount () {
-    this.props.incrementAsync()
+    this.props.updateExchangeData()
   }
 
   render () {
     return (
       <Container >
-        <Card style={{flex: 0}} dataArray={this.props.exchangeData}
+        <ListItem itemDivider>
+          <Text style={styles.updateText}>Last update {this.props.lastUpdateTime}</Text>
+        </ListItem>
+        <Card refreshControl={
+          <RefreshControl
+            refreshing={this.props.refreshing}
+            onRefresh={this.props.updateExchangeData}
+          />
+        } style={{flex: 0}} dataArray={this.props.exchangeData}
               renderRow={(item) =>
-            <CardItem cardBody style={{borderWidth: 0.5, borderColor: '#d6d7da', margin: 5}} bordered='true'>
+            <CardItem style={{borderWidth: 0.5, borderColor: '#d6d7da', margin: 5}} bordered='true'>
               <Body>
                 <Grid>
-                  <Col size={20} style={{padding: 10}}>
-                    <Thumbnail Thumbnail width='80' height='80' source={require('../../Images/seke-100.png')} />
-                  </Col>
-                  <Col size={20} style={{padding: 20}}>
+                  <Col size={20} style={{padding: 0}}>
                     <Text>{item.title}</Text>
+                    <Flag
+                      code={item.flag}
+                      size={48}
+                />
+                  </Col>
+                  <Col size={30} style={{padding: 10}}>
+                    <Text style={styles.listHelperText} >symbole</Text>
+                    <Text>{item.symbole}</Text>
                   </Col>
                   <Col size={20} style={{padding: 10}}>
                     <Text style={styles.listHelperText} >buy</Text>
@@ -88,12 +90,13 @@ CoinRates.contextTypes = {drawer: React.PropTypes.object}
 const mapStateToProps = (state, ownProps) => ({
   isAuth: state.toJS().isAuth,
   dataLoaded: state.toJS().dataLoaded,
-  exchangeData: state.toJS().exchangeData.bill
+  exchangeData: state.toJS().exchangeData.bill,
+  refreshing: state.toJS().refreshing,
+  lastUpdateTime: state.toJS().lastUpdateTime
 });
 
 const mapDispatchToProps = {
-  login, logout, incrementAsync
+  updateExchangeData
 };
-
 
 export default connect(mapStateToProps, mapDispatchToProps)(CoinRates)

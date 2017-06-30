@@ -53,16 +53,32 @@ class CoinRates extends React.Component {
   render () {
     return (
       <Container >
-        <ListItem itemDivider>
-          <Switch value={this.props.dataLoaded}/>
-          <Text style={styles.updateText}>Last update: {this.props.dataType}</Text>
-          <Button onPress={() => this.props.incrementAsync()}>
-            <Text>LOAD DATA</Text>
-          </Button>
-        </ListItem>
-        <Text>
-          {/*{this.props.dataType}*/}
-        </Text>
+        <Card style={{flex: 0}} dataArray={this.props.exchangeData}
+              renderRow={(item) =>
+            <CardItem cardBody style={{borderWidth: 0.5, borderColor: '#d6d7da', margin: 5}} bordered='true'>
+              <Body>
+                <Grid>
+                  <Col size={20} style={{padding: 10}}>
+                    <Thumbnail Thumbnail width='80' height='80' source={require('../../Images/seke-100.png')} />
+                  </Col>
+                  <Col size={20} style={{padding: 20}}>
+                    <Text>{item.title}</Text>
+                  </Col>
+                  <Col size={20} style={{padding: 10}}>
+                    <Text style={styles.listHelperText} >buy</Text>
+                    <Text>{item.buy}</Text>
+                  </Col>
+                  <Col size={20} style={{padding: 10}}>
+                    <Text style={styles.listHelperText} >sale</Text>
+                    <Text>{item.sale}</Text>
+                  </Col>
+                  <Col size={10} style={{paddingTop: 15}}>
+                    <ChangeIcon change={item.change} />
+                  </Col>
+                </Grid>
+              </Body>
+            </CardItem>
+        }/>
       </Container>
     )
   }
@@ -71,7 +87,8 @@ CoinRates.contextTypes = {drawer: React.PropTypes.object}
 
 const mapStateToProps = (state, ownProps) => ({
   isAuth: state.toJS().isAuth,
-  dataLoaded: state.toJS().dataLoaded
+  dataLoaded: state.toJS().dataLoaded,
+  exchangeData: state.toJS().exchangeData.bill
 });
 
 const mapDispatchToProps = {

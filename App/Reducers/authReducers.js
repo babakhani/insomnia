@@ -5,7 +5,9 @@ const initialState = fromJS({
   isAuth: false,
   dataLoaded: false,
   dataType: 'Bah',
-  exchangeData: ['Json Data']
+  exchangeData: {
+    bill:[{title:"test"}]
+  }
 });
 
 //const todoReducers = handleActions({
@@ -30,6 +32,9 @@ export const todoReducers = (state, action) => {
     case 'LOGOUT':
       return state.set('isAuth', false);
     case 'DATA_LOADED':
+      console.log('DATA_LOADED');
+      console.log(state);
+      console.log(action.data);
       const map1 = Map(state);
       const map2 = Map({
         'dataType': action.data.type,

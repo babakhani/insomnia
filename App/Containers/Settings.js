@@ -1,6 +1,8 @@
 import React from 'react'
 import {
-  Switch
+  Switch,
+  FlatList,
+  ListView
 } from 'react-native'
 import {connect} from 'react-redux'
 import {
@@ -12,6 +14,7 @@ import {
   CardItem,
   Grid,
   Col,
+  Content,
   Row,
   Title,
   Button,
@@ -26,6 +29,10 @@ import {
 } from '../Actions/index'
 
 class Settings extends React.Component {
+  constructor (props) {
+    super(props)
+  }
+
   componentWillMount () {
     this.props.incrementAsync()
   }
@@ -93,9 +100,15 @@ class Settings extends React.Component {
         <ListItem icon>
           <Body>
           <Text>_{this.props.dataType}_</Text>
-          <Text>_{JSON.toString(this.props.exchangeData)}_</Text>
           </Body>
         </ListItem>
+        <Content>
+          <ListView
+            dataSource={this.props.exchangeData()}
+            renderRow={(rowData) => <Text>{rowData.title}</Text>}
+          />
+        </Content>
+
       </Container>
     )
   }
@@ -107,7 +120,10 @@ const mapStateToProps = (state, ownProps) => ({
   isAuth: state.toJS().isAuth,
   dataLoaded: state.toJS().dataLoaded,
   dataType: state.toJS().dataType,
-  exchangeData: state.toJS().exchangeData
+  exchangeData: function () {
+    const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
+    return ds.cloneWithRows(state.toJS().exchangeData.bill)
+  }
 });
 
 const mapDispatchToProps = {

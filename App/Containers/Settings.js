@@ -10,12 +10,6 @@ import {
   Text,
   Container,
   Header,
-  Card,
-  CardItem,
-  Grid,
-  Col,
-  Content,
-  Row,
   Title,
   Button,
   Left,
@@ -25,7 +19,7 @@ import {
 } from 'native-base'
 
 import {
-  login, logout, updateExchangeData
+  updateExchangeData, switchLayout
 } from '../Actions/index'
 
 class Settings extends React.Component {
@@ -56,21 +50,10 @@ class Settings extends React.Component {
             <Icon name='settings'/>
           </Left>
           <Body>
-          <Text>Login</Text>
+          <Text>RTL layout</Text>
           </Body>
           <Right>
-            <Switch onValueChange={() => this.props.login()} value={this.props.isAuth}/>
-          </Right>
-        </ListItem>
-        <ListItem icon>
-          <Left>
-            <Icon name='settings'/>
-          </Left>
-          <Body>
-          <Text>Logout</Text>
-          </Body>
-          <Right>
-            <Switch onValueChange={() => this.props.logout()} value={this.props.isAuth}/>
+            <Switch onValueChange={() => this.props.switchLayout()} value={this.props.isRTL}/>
           </Right>
         </ListItem>
         <ListItem icon>
@@ -81,7 +64,7 @@ class Settings extends React.Component {
           <Text>Is Data Loaded</Text>
           </Body>
           <Right>
-            <Switch value={this.props.dataLoaded}/>
+            <Switch disabled value={this.props.dataLoaded}/>
           </Right>
         </ListItem>
       </Container>
@@ -95,14 +78,11 @@ const mapStateToProps = (state, ownProps) => ({
   isAuth: state.toJS().isAuth,
   dataLoaded: state.toJS().dataLoaded,
   dataType: state.toJS().dataType,
-  exchangeData: function () {
-    const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
-    return ds.cloneWithRows(state.toJS().exchangeData.bill)
-  }
+  isRTL: state.toJS().isRTL
 });
 
 const mapDispatchToProps = {
-  login, logout, updateExchangeData
+  updateExchangeData, switchLayout
 };
 
 const AppContainer = connect(

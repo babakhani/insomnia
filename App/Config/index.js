@@ -1,4 +1,4 @@
-import { Text } from 'react-native'
+import ReactNative, {Text} from 'react-native'
 import DebugConfig from './DebugConfig'
 import AppConfig from './AppConfig'
 
@@ -12,3 +12,4 @@ export default () => {
   // Allow/disallow font-scaling in app
   Text.defaultProps.allowFontScaling = AppConfig.allowTextFontScaling
 }
+

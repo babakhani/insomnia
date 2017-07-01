@@ -15,12 +15,12 @@ class NavigationRouter extends Component {
       <Router>
         <Scene key='drawer' component={NavigationDrawer} open={false}>
           <Scene key='login' component={Login} title='Login'/>
-          <Scene key='launchScreen' component={LaunchScreen} title='LaunchScreen'/>
+          <Scene  key='launchScreen' component={LaunchScreen} title='LaunchScreen'/>
           <Scene key='listViewExample' component={ExchangeView}/>
           <Scene key='cardExample' component={ExchangeView}/>
-          <Scene initial key='exchangeView' component={ExchangeView}/>
+          <Scene key='exchangeView' component={ExchangeView}/>
           <Scene key='contactUs' component={ContactUs}/>
-          <Scene key='settings' component={Settings}/>
+          <Scene initial key='settings' component={Settings}/>
         </Scene>
       </Router>
     )

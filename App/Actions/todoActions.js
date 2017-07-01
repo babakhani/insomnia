@@ -3,6 +3,7 @@ export const LOGOUT = 'LOGOUT';
 export const END_REFRESHING = 'END_REFRESHING';
 export const START_REFRESHING = 'START_REFRESHING';
 export const DATA_LOADED = 'DATA_LOADED';
+export const SWITCH_LAYOUT = 'SWITCH_LAYOUT';
 export const UPDATE_LAST_UPDATE_TIME = 'UPDATE_LAST_UPDATE_TIME';
 const moment = require('moment');
 export function login (text) {
@@ -27,7 +28,11 @@ function updateLastUpdateTime (date) {
   };
 }
 
-
+export function switchLayout () {
+  return {
+    type: SWITCH_LAYOUT
+  };
+}
 
 function fetchSecretSauce () {
   return fetch('https://private-83128-exchange8.apiary-mock.com/exchange#');
@@ -36,7 +41,7 @@ function fetchSecretSauce () {
 export function updateExchangeData () {
   return dispatch => {
     return fetchSecretSauce().then((response) => response.json()).then((response) => {
-        dispatch(updateLastUpdateTime( moment().format() ));
+        dispatch(updateLastUpdateTime(moment().format()));
         dispatch(endRefreshing());
         dispatch(increment(response[0]));
       }
@@ -60,8 +65,6 @@ export function incrementAsync () {
   dispatch(startRefreshing())
   return dispatch => {
     return fetchSecretSauce().then((response) => response.json()).then((response) => {
-        console.log("test fetch done");
-        console.log(response);
         dispatch(increment(response[0]))
       }
     );

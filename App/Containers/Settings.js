@@ -8,6 +8,7 @@ import {connect} from 'react-redux'
 import {
   ListItem,
   Text,
+  Picker,
   Container,
   Header,
   Title,
@@ -17,9 +18,12 @@ import {
   Body,
   Icon
 } from 'native-base'
+import MIcon from 'react-native-vector-icons/MaterialCommunityIcons'
+import I18n from 'react-native-i18n'
 
+// Imported Actions
 import {
-  updateExchangeData, switchLayout
+  updateExchangeData, switchLayout, changeLanguage
 } from '../Actions/index'
 
 class Settings extends React.Component {
@@ -41,7 +45,7 @@ class Settings extends React.Component {
             </Button>
           </Left>
           <Body style={{flex: 3}}>
-          <Title>Settings</Title>
+          <Title>{I18n.t('settings')}</Title>
           </Body>
           <Right />
         </Header>
@@ -50,7 +54,7 @@ class Settings extends React.Component {
             <Icon name='settings'/>
           </Left>
           <Body>
-          <Text>RTL layout</Text>
+          <Text>{I18n.t('rtlـlayout')}</Text>
           </Body>
           <Right>
             <Switch onValueChange={() => this.props.switchLayout()} value={this.props.isRTL}/>
@@ -61,10 +65,27 @@ class Settings extends React.Component {
             <Icon name='settings'/>
           </Left>
           <Body>
-          <Text>Is Data Loaded</Text>
+          <Text>{I18n.t('is_data_loaded')}</Text>
           </Body>
           <Right>
             <Switch disabled value={this.props.dataLoaded}/>
+          </Right>
+        </ListItem>
+
+        <ListItem icon>
+          <Left>
+            <MIcon size={24} name='earth'/>
+          </Left>
+          <Body>
+          <Text>{I18n.t('language')}</Text>
+          </Body>
+          <Right>
+            <Picker
+              selectedValue={this.props.language}
+              onValueChange={(itemValue, itemIndex) => this.props.changeLanguage(itemValue)}>
+              <Picker.Item label="فارسی" value="fa"/>
+              <Picker.Item label="English" value="en"/>
+            </Picker>
           </Right>
         </ListItem>
       </Container>
@@ -78,11 +99,12 @@ const mapStateToProps = (state, ownProps) => ({
   isAuth: state.toJS().isAuth,
   dataLoaded: state.toJS().dataLoaded,
   dataType: state.toJS().dataType,
-  isRTL: state.toJS().isRTL
+  isRTL: state.toJS().isRTL,
+  language: state.toJS().language
 });
 
 const mapDispatchToProps = {
-  updateExchangeData, switchLayout
+  updateExchangeData, switchLayout, changeLanguage
 };
 
 const AppContainer = connect(

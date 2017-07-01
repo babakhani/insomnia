@@ -1,9 +1,9 @@
 {
   "signIn": "ورود",
-  "logOut": "Se déconnecter",
-  "loginLogoutExampleTitle": "Connexion / Déconnexion Redux + Sagas Exemple",
-  "progressiveImageComponent": "Composant Image Progressive",
-  "api": "Mon Dieu!  Une API pour vous!",
+  "settings": "تنظیمات",
+  "rtlـlayout": "چیدمان از راست",
+  "language": "زبان",
+  "is_data_loaded": "همکام سازی انجام شده",
   "locale": "I18n Paramètres régionaux",
   "rnVectorIcons": "RN icônes vectorielles",
   "loginWithFacebook": "Se connecter avec Facebook",

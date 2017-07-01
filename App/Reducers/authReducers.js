@@ -6,6 +6,7 @@ const initialState = fromJS({
   dataType: 'Bah',
   refreshing: false,
   lastUpdateTime: '',
+  language: 'en',
   isRTL: false,
   exchangeData: {
     bill: [],
@@ -14,10 +15,10 @@ const initialState = fromJS({
 });
 export const todoReducers = (state, action) => {
   switch (action.type) {
+    case 'CHANGE_LANGUAGE':
+      return state.set('language', action.language);
     case 'SWITCH_LAYOUT':
       const oldVal = state.get('isRTL');
-      console.log('change layout to rtl')
-      console.log(!oldVal)
       I18nManager.forceRTL(!oldVal);
       return state.set('isRTL', !oldVal);
     case 'START_REFRESHING':
@@ -31,9 +32,6 @@ export const todoReducers = (state, action) => {
     case 'UPDATE_LAST_UPDATE_TIME':
       return state.set('lastUpdateTime', action.date);
     case 'DATA_LOADED':
-      console.log('DATA_LOADED');
-      console.log(state);
-      console.log(action.data);
       const map1 = Map(state);
       const map2 = Map({
         'dataType': action.data.type,

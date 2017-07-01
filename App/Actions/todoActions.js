@@ -4,7 +4,10 @@ export const END_REFRESHING = 'END_REFRESHING';
 export const START_REFRESHING = 'START_REFRESHING';
 export const DATA_LOADED = 'DATA_LOADED';
 export const SWITCH_LAYOUT = 'SWITCH_LAYOUT';
+export const CHANGE_LANGUAGE = 'CHANGE_LANGUAGE';
 export const UPDATE_LAST_UPDATE_TIME = 'UPDATE_LAST_UPDATE_TIME';
+
+import I18n from 'react-native-i18n'
 const moment = require('moment');
 export function login (text) {
   return {type: LOGIN}
@@ -14,10 +17,13 @@ export function logout (index) {
   return {type: LOGOUT}
 }
 
-function increment (response) {
+
+export function changeLanguage (languageSlug) {
+  console.log(languageSlug);
+  I18n.locale = languageSlug;
   return {
-    type: DATA_LOADED,
-    data: response
+    type: CHANGE_LANGUAGE,
+    language: languageSlug
   };
 }
 
@@ -38,12 +44,19 @@ function fetchSecretSauce () {
   return fetch('https://private-83128-exchange8.apiary-mock.com/exchange#');
 }
 
+function DoUpdateExchangeData (response) {
+  return {
+    type: DATA_LOADED,
+    data: response
+  };
+}
+
 export function updateExchangeData () {
   return dispatch => {
     return fetchSecretSauce().then((response) => response.json()).then((response) => {
         dispatch(updateLastUpdateTime(moment().format()));
         dispatch(endRefreshing());
-        dispatch(increment(response[0]));
+        dispatch(DoUpdateExchangeData(response[0]));
       }
     );
   };
@@ -61,12 +74,3 @@ export function startRefreshing () {
   };
 }
 
-export function incrementAsync () {
-  dispatch(startRefreshing())
-  return dispatch => {
-    return fetchSecretSauce().then((response) => response.json()).then((response) => {
-        dispatch(increment(response[0]))
-      }
-    );
-  };
-}

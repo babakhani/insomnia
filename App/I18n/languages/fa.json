@@ -1,5 +1,5 @@
 {
-  "signIn": "Se connecter",
+  "signIn": "ورود",
   "logOut": "Se déconnecter",
   "loginLogoutExampleTitle": "Connexion / Déconnexion Redux + Sagas Exemple",
   "progressiveImageComponent": "Composant Image Progressive",

@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import {Provider} from 'react-redux'
 import {store} from '../Redux/'
 import RootContainer from './RootContainer'
+import '../Config';
 
 // create our store
 console.disableYellowBox = true;

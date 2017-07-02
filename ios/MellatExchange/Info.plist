@@ -97,6 +97,11 @@
       <string>Octicons.ttf</string>
       <string>SimpleLineIcons.ttf</string>
       <string>Zocial.ttf</string>
+      <string>iran-sans-bold.ttf</string>
+      <string>iran-sans-light.ttf</string>
+      <string>iran-sans-medium.ttf</string>
+      <string>iran-sans-ultra-light.ttf</string>
+      <string>iran-sans.ttf</string>
     </array>
   </dict>
 </plist>

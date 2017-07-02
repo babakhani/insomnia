@@ -3,6 +3,9 @@ import {Provider} from 'react-redux'
 import RootContainer from './RootContainer'
 import {store} from '../Redux/'
 import '../Config';
+import {StyleProvider} from 'native-base'
+import getTheme from '../../native-base-theme/components'
+import platform from '../../native-base-theme/variables/material'
 
 // create our store
 console.disableYellowBox = true;
@@ -18,9 +21,11 @@ console.disableYellowBox = true;
 class App extends Component {
   render () {
     return (
-      <Provider store={store}>
-        <RootContainer />
-      </Provider>
+      <StyleProvider style={getTheme(platform)}>
+        <Provider store={store}>
+          <RootContainer />
+        </Provider>
+      </StyleProvider>
     )
   }
 }

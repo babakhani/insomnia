@@ -23,6 +23,11 @@
     "prepush": "npm run git-hook",
     "git-hook": "npm run lint -s && npm test -s"
   },
+  "rnpm": {
+    "assets": [
+      "./native-base-theme/fonts"
+    ]
+  },
   "dependencies": {
     "apisauce": "^0.10.0",
     "format-json": "^1.0.3",

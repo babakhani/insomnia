@@ -5,7 +5,7 @@ import {Actions as NavigationActions} from 'react-native-router-flux'
 import styles from './Styles/DrawerContentStyles'
 import {Images} from '../Themes'
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
-
+import I18n from 'react-native-i18n'
 class DrawerContent extends Component {
 
   componentDidMount () {
@@ -25,38 +25,38 @@ class DrawerContent extends Component {
   render () {
     return (
       <View style={styles.container}>
-        <Image source={Images.logoDark} style={styles.logo} />
+        <Image source={Images.logoDark} style={styles.logo}/>
         <Content>
           <ListItem icon onPress={() => { NavigationActions.exchangeView(); this.context.drawer.close() }}>
             <Left>
-              <Icon size={30} name='coin' />
+              <Icon size={30} name='coin'/>
             </Left>
             <Body>
-              <Text>Exchange Rate</Text>
+            <Text>{I18n.t('exchange_rate')}</Text>
             </Body>
           </ListItem>
           <ListItem icon onPress={() => { NavigationActions.listViewExample(); this.context.drawer.close() }}>
             <Left>
-              <Icon size={30} name='link' />
+              <Icon size={30} name='link'/>
             </Left>
             <Body>
-              <Text>Usefull links</Text>
+            <Text>{I18n.t('usefull_links')}</Text>
             </Body>
           </ListItem>
           <ListItem icon onPress={() => { NavigationActions.contactUs(); this.context.drawer.close() }}>
             <Left>
-              <Icon size={30} name='phone-classic' />
+              <Icon size={30} name='phone-classic'/>
             </Left>
             <Body>
-              <Text>Contact us</Text>
+            <Text>{I18n.t('contact_us')}</Text>
             </Body>
           </ListItem>
           <ListItem icon onPress={() => { NavigationActions.settings(); this.context.drawer.close() }}>
             <Left>
-              <Icon size={30} name='settings' />
+              <Icon size={30} name='settings'/>
             </Left>
             <Body>
-              <Text>Setting</Text>
+            <Text>{I18n.t('settings')}</Text>
             </Body>
           </ListItem>
         </Content>

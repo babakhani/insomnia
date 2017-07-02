@@ -19,7 +19,9 @@ export function logout (index) {
 
 
 export function changeLanguage (languageSlug) {
+  console.log('changeLanguage method')
   console.log(languageSlug);
+  I18n.defaultLocale = languageSlug;
   I18n.locale = languageSlug;
   return {
     type: CHANGE_LANGUAGE,

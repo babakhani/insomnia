@@ -6,7 +6,7 @@ const initialState = fromJS({
   dataType: 'Bah',
   refreshing: false,
   lastUpdateTime: '',
-  language: 'en',
+  language: 'fa',
   isRTL: false,
   exchangeData: {
     bill: [],

@@ -3,18 +3,14 @@ import {View, StatusBar, I18nManager} from 'react-native'
 import {connect} from 'react-redux'
 import NavigationRouter from '../Navigation/NavigationRouter'
 import styles from './Styles/RootContainerStyles'
-import I18n from 'react-native-i18n'
+
 
 class RootContainer extends Component {
   constructor (props) {
     super(props);
-    console.log('is app rtl');
-    console.log(this.props.isRTL);
-    console.log('lang:' + I18n.locale);
-    console.log(this.props.language)
-    I18nManager.forceRTL(this.props.isRTL);
-    I18n.defaultLocale = this.props.isRTL;
-    I18n.locale = this.props.language;
+  }
+
+  componentDidMount () {
   }
 
   render () {

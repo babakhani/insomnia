@@ -31,7 +31,6 @@
   rootViewController.view = rootView;
   self.window.rootViewController = rootViewController;
   [self.window makeKeyAndVisible];
-   [[RCTI18nUtil sharedInstance] allowRTL:YES];
   return YES;
 }
 

@@ -1,13 +1,22 @@
 import React from 'react'
 import {ScrollView, Text, Image, View, I18nManager} from 'react-native'
-import {Button, Text as NBText} from 'native-base'
+import {connect} from 'react-redux'
+import {Button, Text as NBText, Picker} from 'native-base'
 import {Images} from '../Themes'
 import {Actions} from 'react-native-router-flux'
 import styles from './Styles/LaunchScreenStyles'
 import I18n from 'react-native-i18n'
 const IS_RTL = I18nManager.isRTL;
+// Imported Actions
+import {
+  changeLanguage
+} from '../Actions/index'
 
-export default class LaunchScreen extends React.Component {
+class LaunchScreen extends React.Component {
+  constructor (props) {
+    super(props)
+  }
+
   render () {
     return (
       <View style={styles.mainContainer}>
@@ -18,14 +27,11 @@ export default class LaunchScreen extends React.Component {
           </View>
           <View style={styles.section}>
             <Text style={styles.sectionText}>
-              {'Wellcome to MellatExchange Application' }
-            </Text>
-            <Text style={styles.sectionText}>
-              {'Rendered Layout as RTL' + IS_RTL}
+              {I18n.t('greeting')}
             </Text>
           </View>
           <Button style={{alignSelf: 'center'}} onPress={Actions.exchangeView}>
-            <NBText>{I18n.t('signIn')}</NBText>
+            <NBText>{I18n.t('signin')}</NBText>
           </Button>
         </ScrollView>
       </View>
@@ -33,6 +39,18 @@ export default class LaunchScreen extends React.Component {
   }
 }
 
+
+const mapDispatchToProps = {
+  changeLanguage
+};
+
+const mapStateToProps = (state, ownProps) => ({
+  language: state.toJS().language
+});
+
 LaunchScreen.contextTypes = {
   drawer: React.PropTypes.object
 }
+
+export default connect(mapStateToProps, mapDispatchToProps)(LaunchScreen)
+

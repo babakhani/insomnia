@@ -15,7 +15,7 @@ import {
 import BillRates from './Exchange/BillRates'
 import CoinRates from './Exchange/CoinRates'
 import TransferRates from './Exchange/TransferRates'
-
+import I18n from 'react-native-i18n'
 class ExchangeView extends React.Component {
   render () {
     return (
@@ -27,18 +27,18 @@ class ExchangeView extends React.Component {
             </Button>
           </Left>
           <Body style={{flex: 3}}>
-          <Title>Exchange</Title>
+          <Title> {I18n.t('exchange')}</Title>
           </Body>
           <Right />
         </Header>
         <Tabs initialPage={0}>
-          <Tab heading='Bill rates'>
+          <Tab heading={I18n.t('bill_rates')}>
             <BillRates />
           </Tab>
-          <Tab heading='Coin rates'>
+          <Tab heading={I18n.t('coin_rates')}>
             <CoinRates />
           </Tab>
-          <Tab heading='Transfer rates'>
+          <Tab heading={I18n.t('transfer_rates')}>
             <TransferRates />
           </Tab>
         </Tabs>

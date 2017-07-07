@@ -2,21 +2,22 @@ import React from 'react'
 import {Linking} from 'react-native'
 import {connect} from 'react-redux'
 import {
-    ListItem,
-    Text,
-    Container,
-    Header,
-    CardItem,
-    Card,
-    Title,
-    Button,
-    Left,
-    Right,
-    Icon as NativeBaseIcon,
-    Body
+  ListItem,
+  Text,
+  Container,
+  Header,
+  CardItem,
+  Card,
+  Title,
+  Button,
+  Left,
+  Right,
+  Icon as NativeBaseIcon,
+  Body
 } from 'native-base'
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 import MapView from 'react-native-maps'
+import I18n from 'react-native-i18n'
 
 const styles = {
   mapContainer: {
@@ -50,24 +51,24 @@ class ContactUs extends React.Component {
         <Header>
           <Left>
             <Button transparent onPress={() => this.context.drawer.open()}>
-              <NativeBaseIcon name='ios-menu' />
+              <NativeBaseIcon name='ios-menu'/>
             </Button>
           </Left>
           <Body style={{flex: 3}}>
-            <Title>Contact Us</Title>
+          <Title>{I18n.t('contact_us')}</Title>
           </Body>
           <Right />
         </Header>
         <ListItem itemDivider>
-          <Text>Central ofiice</Text>
+          <Text>{I18n.t('central_office')}</Text>
         </ListItem>
         <Card>
           <CardItem icon>
             <Left>
-              <Icon size={24} name='phone-classic' />
+              <Icon size={24} name='phone-classic'/>
             </Left>
             <Body>
-              <Text>+98 21 66703040</Text>
+            <Text>+98 21 66703040</Text>
             </Body>
           </CardItem>
           <CardItem >
@@ -79,7 +80,7 @@ class ContactUs extends React.Component {
                 latitudeDelta: 0.009,
                 longitudeDelta: 0.009
               }}
-                        >
+            >
 
               <MapView.Marker
                 coordinate={{
@@ -90,26 +91,24 @@ class ContactUs extends React.Component {
                 }}
                 title='Marker text'
                 description='Marker Test'
-                            />
-
+              />
             </MapView>
-
             <Button small success ref='statusbutton'
-              onPress={this.loadRoute}>
-              <Text>Get Route to office</Text>
+                    onPress={this.loadRoute}>
+              <Text>{I18n.t('get_route_to_office')}</Text>
             </Button>
           </CardItem>
         </Card>
         <ListItem itemDivider>
-          <Text>Master Branch</Text>
+          <Text>{I18n.t('master_branch')}</Text>
         </ListItem>
         <Card>
           <CardItem icon>
             <Left>
-              <Icon size={24} name='phone-classic' />
+              <Icon size={24} name='phone-classic'/>
             </Left>
             <Body>
-              <Text>+98 21 42533000</Text>
+            <Text>+98 21 42533000</Text>
             </Body>
           </CardItem>
           <CardItem >
@@ -120,8 +119,7 @@ class ContactUs extends React.Component {
                 longitude: 51.419181,
                 latitudeDelta: 0.009,
                 longitudeDelta: 0.009
-              }}
-                        >
+              }}>
               <MapView.Marker
                 coordinate={{
                   latitude: 35.700348,
@@ -131,12 +129,12 @@ class ContactUs extends React.Component {
                 }}
                 title='Marker text'
                 description='Marker Test'
-                            />
+              />
 
             </MapView>
             <Button small success ref='statusbutton'
-              onPress={this.loadRoute}>
-              <Text>Get Route to office</Text>
+                    onPress={this.loadRoute}>
+              <Text>{I18n.t('get_route_to_office')}</Text>
             </Button>
           </CardItem>
         </Card>
@@ -147,7 +145,7 @@ class ContactUs extends React.Component {
 ContactUs.contextTypes = {drawer: React.PropTypes.object}
 const mapStateToProps = (state) => {
   return {
-        // ...redux state to props here
+    // ...redux state to props here
   }
 }
 export default connect(mapStateToProps)(ContactUs)

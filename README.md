@@ -58,5 +58,9 @@ Secrets.API_URL  // 'https://myapi.com'
 Secrets.GOOGLE_MAPS_API_KEY  // 'abcdefgh'
 ```
 
+
+
+[lottie](https://www.lottiefiles.com/search?q=heart)
+
 The `.env` file is ignored by git keeping those secrets out of your repo.
 

@@ -16,6 +16,8 @@ import BillRates from './Exchange/BillRates'
 import CoinRates from './Exchange/CoinRates'
 import TransferRates from './Exchange/TransferRates'
 import I18n from 'react-native-i18n'
+
+
 class ExchangeView extends React.Component {
   render () {
     return (

@@ -11,7 +11,8 @@
   "transfer_rates":"حواله",
   "exchange_rate": "نرخ تبادل ارز",
   "usefull_links": "پیوند های کاربردی",
-  "contact_us": "تماس با ما"
-
-
+  "contact_us": "تماس با ما",
+  "central_office": "دفتر مرکزی",
+  "master_branch" : "شعبه اصلی",
+  "get_route_to_office":"دسترسی به شعبه"
 }

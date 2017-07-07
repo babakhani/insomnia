@@ -11,6 +11,8 @@
   "transfer_rates":"Transfers",
   "exchange_rate": "Exchange rate",
   "usefull_links": "Usefull Links",
-  "contact_us": "Contact Us"
-
+  "contact_us": "Contact Us",
+  "central_office": "Central Office",
+  "master_branch" : "Master Branch",
+  "get_route_to_office":"Get route to office"
 }

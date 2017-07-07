@@ -35,7 +35,7 @@ class DrawerContent extends Component {
             <Text>{I18n.t('exchange_rate')}</Text>
             </Body>
           </ListItem>
-          <ListItem icon onPress={() => { NavigationActions.listViewExample(); this.context.drawer.close() }}>
+          <ListItem icon onPress={() => { NavigationActions.exchangeView(); this.context.drawer.close() }}>
             <Left>
               <Icon size={30} name='link'/>
             </Left>

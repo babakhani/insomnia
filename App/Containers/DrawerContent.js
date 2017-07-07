@@ -35,14 +35,14 @@ class DrawerContent extends Component {
             <Text>{I18n.t('exchange_rate')}</Text>
             </Body>
           </ListItem>
-          <ListItem icon onPress={() => { NavigationActions.exchangeView(); this.context.drawer.close() }}>
-            <Left>
-              <Icon size={30} name='link'/>
-            </Left>
-            <Body>
-            <Text>{I18n.t('usefull_links')}</Text>
-            </Body>
-          </ListItem>
+          {/*<ListItem icon onPress={() => { NavigationActions.exchangeView(); this.context.drawer.close() }}>*/}
+            {/*<Left>*/}
+              {/*<Icon size={30} name='link'/>*/}
+            {/*</Left>*/}
+            {/*<Body>*/}
+            {/*<Text>{I18n.t('usefull_links')}</Text>*/}
+            {/*</Body>*/}
+          {/*</ListItem>*/}
           <ListItem icon onPress={() => { NavigationActions.contactUs(); this.context.drawer.close() }}>
             <Left>
               <Icon size={30} name='phone-classic'/>

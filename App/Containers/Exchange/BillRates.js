@@ -85,7 +85,6 @@ class BillRates extends React.Component {
     )
   }
 }
-BillRates.contextTypes = {drawer: React.PropTypes.object}
 
 const mapStateToProps = (state, ownProps) => ({
   isAuth: state.toJS().isAuth,

@@ -1,8 +1,10 @@
 import React, {PropTypes, Component} from 'react'
+import {I18nManager} from 'react-native'
 import {Drawer} from 'native-base'
 import {DefaultRenderer, Actions as NavigationActions} from 'react-native-router-flux'
 import DrawerContent from '../Containers/DrawerContent'
 import {connect} from 'react-redux'
+const IS_RTL = I18nManager.isRTL;
 
 /* *******************
  * Documentation: https://github.com/root-two/react-native-drawer
@@ -19,7 +21,7 @@ class NavigationDrawer extends Component {
         panOpenMask={.25}
         openDrawerOffset={0.2}
         closedDrawerOffset={-3}
-        side="right"
+        side="left"
         onOpen={() => NavigationActions.refresh({key: state.key, open: true})}
         onClose={() => NavigationActions.refresh({key: state.key, open: false})}
         content={<DrawerContent />}

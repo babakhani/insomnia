@@ -10,7 +10,6 @@ import {
   Text,
   Picker,
   Container,
-  Header,
   Title,
   Button,
   Left,
@@ -20,7 +19,7 @@ import {
 } from 'native-base'
 import MIcon from 'react-native-vector-icons/MaterialCommunityIcons'
 import I18n from 'react-native-i18n'
-
+import Header from '../Components/Header'
 // Imported Actions
 import {
   updateExchangeData, switchLayout, changeLanguage
@@ -38,17 +37,7 @@ class Settings extends React.Component {
   render () {
     return (
       <Container >
-        <Header>
-          <Left>
-            <Button transparent onPress={() => this.context.drawer.open()}>
-              <Icon name='ios-menu'/>
-            </Button>
-          </Left>
-          <Body style={{flex: 3}}>
-          <Title>{I18n.t('settings')}</Title>
-          </Body>
-          <Right />
-        </Header>
+        <Header title='settings'></Header>
         <ListItem icon>
           <Left>
             <Icon name='settings'/>

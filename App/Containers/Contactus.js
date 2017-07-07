@@ -5,7 +5,6 @@ import {
   ListItem,
   Text,
   Container,
-  Header,
   CardItem,
   Card,
   Title,
@@ -18,6 +17,7 @@ import {
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 import MapView from 'react-native-maps'
 import I18n from 'react-native-i18n'
+import Header from '../Components/Header'
 
 const styles = {
   mapContainer: {
@@ -48,19 +48,9 @@ class ContactUs extends React.Component {
   render () {
     return (
       <Container >
-        <Header>
-          <Left>
-            <Button transparent onPress={() => this.context.drawer.open()}>
-              <NativeBaseIcon name='ios-menu'/>
-            </Button>
-          </Left>
-          <Body style={{flex: 3}}>
-          <Title>{I18n.t('contact_us')}</Title>
-          </Body>
-          <Right />
-        </Header>
+        <Header title='contact_us'></Header>
         <ListItem itemDivider>
-          <Text>{I18n.t('central_office')}</Text>
+          <Text>{I18n.t('contact_us')}</Text>
         </ListItem>
         <Card>
           <CardItem icon>

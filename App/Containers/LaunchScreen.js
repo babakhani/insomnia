@@ -23,11 +23,14 @@ class LaunchScreen extends React.Component {
     };
   }
 
+
   componentDidMount () {
     Animated.timing(this.state.progress, {
       toValue: 1,
-      duration: 3000,
+      duration: 5000,
     }).start();
+
+
   }
 
   reset () {
@@ -49,9 +52,15 @@ class LaunchScreen extends React.Component {
   render () {
     return (
       <View style={styles.mainContainer}>
-        <Image source={Images.background} style={styles.backgroundImage} resizeMode='stretch'/>
-        <ScrollView style={styles.container}>
 
+        {/*<Animation*/}
+        {/*style={styles.backgroundImage}*/}
+        {/*source={require('../Animation/mild_wave.json')}*/}
+        {/*progress={this.state.bgAnimate}*/}
+        {/*resizeMode='stretch'*/}
+        {/*/>*/}
+
+        <ScrollView style={styles.container}>
           <View style={styles.animateContainerWrapper}>
             <View style={styles.animateContainer}>
               <Animation
@@ -73,6 +82,7 @@ class LaunchScreen extends React.Component {
           <Button large block style={{alignSelf: 'center'}} onPress={() => this.play()}>
             <NBText>{I18n.t('signin')}</NBText>
           </Button>
+
         </ScrollView>
       </View>
     )

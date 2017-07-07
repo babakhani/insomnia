@@ -4,35 +4,26 @@ import {
   Tab,
   Tabs,
   Container,
-  Header,
-  Title,
-  Button,
-  Left,
-  Right,
-  Body,
-  Icon
+
 } from 'native-base'
 import BillRates from './Exchange/BillRates'
 import CoinRates from './Exchange/CoinRates'
 import TransferRates from './Exchange/TransferRates'
 import I18n from 'react-native-i18n'
-
+import Header from '../Components/Header'
 
 class ExchangeView extends React.Component {
+  constructor (props) {
+    super(props)
+    this.state = {
+      open: false
+    }
+  }
+
   render () {
     return (
       <Container >
-        <Header>
-          <Left>
-            <Button title='This is button title' transparent onPress={() => this.context.drawer.open()}>
-              <Icon name='ios-menu'/>
-            </Button>
-          </Left>
-          <Body style={{flex: 3}}>
-          <Title> {I18n.t('exchange')}</Title>
-          </Body>
-          <Right />
-        </Header>
+        <Header title='exchange_rate'></Header>
         <Tabs initialPage={0}>
           <Tab heading={I18n.t('bill_rates')}>
             <BillRates />
@@ -50,8 +41,6 @@ class ExchangeView extends React.Component {
 }
 ExchangeView.contextTypes = {drawer: React.PropTypes.object};
 
-const mapStateToProps = (state, ownProps) => ({
-  geod: state.geod,
-});
+const mapStateToProps = (state, ownProps) => ({});
 
 export default connect(mapStateToProps)(ExchangeView)

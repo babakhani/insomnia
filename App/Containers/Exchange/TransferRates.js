@@ -85,7 +85,6 @@ class CoinRates extends React.Component {
     )
   }
 }
-CoinRates.contextTypes = {drawer: React.PropTypes.object}
 
 const mapStateToProps = (state, ownProps) => ({
   isAuth: state.toJS().isAuth,

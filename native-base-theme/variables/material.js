@@ -122,7 +122,7 @@ export default {
 
     // Font
   fontFamily: 'IRANSans',
-  fontSizeBase: 15,
+  fontSizeBase: 12,
 
   get fontSizeH1() {
     return this.fontSizeBase * 1.8;

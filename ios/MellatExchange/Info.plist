@@ -26,10 +26,10 @@
         <key>CFBundleTypeRole</key>
         <string>Editor</string>
         <key>CFBundleURLName</key>
-        <string>com.googleusercontent.apps.849378397059-uv6a7hpo5q5t19bei2l5j0mc53mii1po</string>
+        <string>org.reactjs.native.example.MellatExchange</string>
         <key>CFBundleURLSchemes</key>
         <array>
-          <string>com.googleusercontent.apps.849378397059-uv6a7hpo5q5t19bei2l5j0mc53mii1po</string>
+          <string>org.reactjs.native.example.MellatExchange</string>
         </array>
       </dict>
       <dict>
@@ -39,7 +39,7 @@
         <string>org.reactjs.native.example.MellatExchange</string>
         <key>CFBundleURLSchemes</key>
         <array>
-          <string>org.reactjs.native.example.MellatExchange</string>
+          <string>mellatexchange</string>
         </array>
       </dict>
     </array>

@@ -6,6 +6,7 @@ export const DATA_LOADED = 'DATA_LOADED';
 export const SWITCH_LAYOUT = 'SWITCH_LAYOUT';
 export const CHANGE_LANGUAGE = 'CHANGE_LANGUAGE';
 export const UPDATE_LAST_UPDATE_TIME = 'UPDATE_LAST_UPDATE_TIME';
+export const LOGIN_BY_GOOGLE = 'LOGIN_BY_GOOGLE';
 
 import I18n from 'react-native-i18n'
 const moment = require('moment');
@@ -15,6 +16,15 @@ export function login (text) {
 
 export function logout (index) {
   return {type: LOGOUT}
+}
+
+
+export function loginByGoogle (userInfo, credentials) {
+  return {
+    type: LOGIN_BY_GOOGLE,
+    userInfo: userInfo,
+    credentials: credentials
+  };
 }
 
 

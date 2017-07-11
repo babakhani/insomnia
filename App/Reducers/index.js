@@ -1,6 +1,10 @@
 import {fromJS, Map} from 'immutable';
 import {I18nManager} from 'react-native'
 const initialState = fromJS({
+  userInfo: {
+    name: ""
+  },
+  credentials: {},
   isAuth: false,
   dataLoaded: false,
   dataType: 'Bah',
@@ -15,6 +19,14 @@ const initialState = fromJS({
 });
 export const mainReducers = (state, action) => {
   switch (action.type) {
+    case 'LOGIN_BY_GOOGLE':
+      let map11 = Map(state);
+      let map22 = Map({
+        'userInfo': action.userInfo,
+        'credentials': action.credentials,
+        'isAuth': true
+      });
+      return map11.merge(map22);
     case 'CHANGE_LANGUAGE':
       return state.set('language', action.language);
     case 'SWITCH_LAYOUT':

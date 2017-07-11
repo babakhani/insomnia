@@ -6,6 +6,7 @@ import styles from './Styles/DrawerContentStyles'
 import {Images} from '../Themes'
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 import I18n from 'react-native-i18n'
+import {connect} from 'react-redux'
 class DrawerContent extends Component {
 
   componentDidMount () {
@@ -27,6 +28,16 @@ class DrawerContent extends Component {
       <View style={styles.container}>
         <Image source={Images.logoDark} style={styles.logo}/>
         <Content>
+
+          <ListItem icon onPress={() => { NavigationActions.exchangeView(); this.context.drawer.close() }}>
+            <Left>
+              <Icon size={30} name='coin'/>
+            </Left>
+            <Body>
+            <Text>{this.props.userInfo.name}</Text>
+            </Body>
+          </ListItem>
+
           <ListItem icon onPress={() => { NavigationActions.exchangeView(); this.context.drawer.close() }}>
             <Left>
               <Icon size={30} name='coin'/>
@@ -36,12 +47,12 @@ class DrawerContent extends Component {
             </Body>
           </ListItem>
           {/*<ListItem icon onPress={() => { NavigationActions.exchangeView(); this.context.drawer.close() }}>*/}
-            {/*<Left>*/}
-              {/*<Icon size={30} name='link'/>*/}
-            {/*</Left>*/}
-            {/*<Body>*/}
-            {/*<Text>{I18n.t('usefull_links')}</Text>*/}
-            {/*</Body>*/}
+          {/*<Left>*/}
+          {/*<Icon size={30} name='link'/>*/}
+          {/*</Left>*/}
+          {/*<Body>*/}
+          {/*<Text>{I18n.t('usefull_links')}</Text>*/}
+          {/*</Body>*/}
           {/*</ListItem>*/}
           <ListItem icon onPress={() => { NavigationActions.contactUs(); this.context.drawer.close() }}>
             <Left>
@@ -69,4 +80,11 @@ DrawerContent.contextTypes = {
   drawer: React.PropTypes.object
 }
 
-export default DrawerContent
+const mapDispatchToProps = {};
+
+const mapStateToProps = (state, ownProps) => ({
+  userInfo: state.toJS().userInfo
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(DrawerContent)
+

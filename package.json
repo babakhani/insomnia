@@ -49,6 +49,7 @@
     "react-native-maps": "^0.15.2",
     "react-native-progress": "^3.2.1",
     "react-native-router-flux": "3.38.0",
+    "react-native-simple-auth": "^2.1.0",
     "react-native-vector-icons": "^4.2.0",
     "react-redux": "^5.0.2",
     "redux": "^3.6.0",

@@ -5,6 +5,7 @@ import LaunchScreen from '../Containers/LaunchScreen'
 import ExchangeView from '../Containers/ExchangeView'
 import ContactUs from '../Containers/Contactus'
 import Settings from '../Containers/Settings'
+import ReactNativeSimpleAuthExample from '../Containers/Login'
 /* **************************
  * Documentation: https://github.com/aksonov/react-native-router-flux
  ***************************/
@@ -13,6 +14,7 @@ class NavigationRouter extends Component {
     return (
       <Router>
         <Scene key='drawer' component={NavigationDrawer} open={false}>
+          <Scene  key='login' component={ReactNativeSimpleAuthExample} title='Login'/>
           <Scene initial key='launchScreen' component={LaunchScreen} title='LaunchScreen'/>
           <Scene key='exchangeView' component={ExchangeView}/>
           <Scene key='contactUs' component={ContactUs}/>
